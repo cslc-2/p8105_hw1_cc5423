@@ -1,0 +1,12 @@
+---
+title: "HW1"
+author: "Christina Chen"
+date: "2026-09-20"
+output: html_document
+---
+
+## Problem 1
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
