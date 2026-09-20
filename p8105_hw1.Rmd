@@ -6,7 +6,18 @@ output: html_document
 ---
 
 ## Problem 1
-```{r}
+Load the dataset:
+```{r load}
 data("penguins", package = "palmerpenguins")
 ```
+
+Here is a preview of the dataset:
+```{r prev}
+head(penguins)
+```
+This dataset has `r nrow(penguins)` observations and `r ncol(penguins)` variables.
+The mean flipper length is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)` millimeters.
+
+
+
 
