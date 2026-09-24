@@ -2,7 +2,7 @@
 title: "HW1"
 author: "Christina Chen"
 date: "2026-09-20"
-output: html_document
+output: github_document
 ---
 
 ## Problem 1
