@@ -15,9 +15,19 @@ Load the dataset:
 data("penguins", package = "palmerpenguins")
 ```
 
+### Data Description
 The `penguins` dataset has information on the penguins' species, island, bill length (mm), bill depth (mm), flipper length(mm), body mass (g), sex, and year. 
 The dataset has `r nrow(penguins)` observations and `r ncol(penguins)` variables. 
 The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)` mm.
+
+### Scatterplot
+
+```{r plot, warning = F}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave("penguins_scatterplot.png")
+```
+
 
 
 
