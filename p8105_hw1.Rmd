@@ -29,6 +29,19 @@ ggsave("penguins_scatterplot.png")
 ```
 
 
+## Problem 2
+
+Creating data frame:
+```{r}
+hw1_df = tibble(
+  samp = rnorm(10),
+  samppos = samp > 0,
+  vec_char = c("laundry", "cooking", "dusting", "scrubbing", "mopping", "sweeping", "dishes", "tidying", "ironing", "mending"),
+  vec_factor = factor(c("medium", "hard", "easy", "hard", "medium", "medium", "easy", "medium", "easy", "hard"))
+)
+
+
+```
 
 
 
