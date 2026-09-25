@@ -20,6 +20,11 @@ The `penguins` dataset has information on the penguins' species, island, bill le
 The dataset has `r nrow(penguins)` observations and `r ncol(penguins)` variables. 
 The mean flipper length is `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)` mm.
 
+Here is a preview of the first 6 rows in the dataset:
+```{r}
+head(penguins)
+```
+
 ### Scatterplot
 
 ```{r plot, warning = F}
@@ -31,17 +36,47 @@ ggsave("penguins_scatterplot.png")
 
 ## Problem 2
 
-Creating data frame:
-```{r}
+Creating a data frame with the following:
+
+* a random sample of size 10 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 10 (I picked 10 different chores)
+* a factor vector of length 10, with 3 different factor “levels” (I picked 3 different levels of difficulty)
+```{r df1}
 hw1_df = tibble(
   samp = rnorm(10),
   samppos = samp > 0,
-  vec_char = c("laundry", "cooking", "dusting", "scrubbing", "mopping", "sweeping", "dishes", "tidying", "ironing", "mending"),
-  vec_factor = factor(c("medium", "hard", "easy", "hard", "medium", "medium", "easy", "medium", "easy", "hard"))
+  chores = c("dusting", "laundry", "cooking", "scrubbing", "mopping", "sweeping", "dishes", "tidying", "ironing", "mending"),
+  difficulty = factor(c("easy", "medium", "hard", "hard", "medium", "medium", "easy", "medium", "easy", "hard"))
 )
-
-
 ```
+
+Here is the data frame I just created:
+```{r view, echo = F}
+hw1_df
+```
+
+Taking means of each variable in the data frame:
+```{r means}
+mean(pull(hw1_df, samp))
+mean(pull(hw1_df, samppos))
+mean(pull(hw1_df, chores))
+mean(pull(hw1_df, difficulty))
+```
+We are able to take the mean of the random sample and the logical vector but not the character vector or the factor vector.
+
+Converting variables to numeric:
+```{r convert, results = "hide", warning = F}
+as.numeric(pull(hw1_df, samppos))
+as.numeric(pull(hw1_df, chores))
+as.numeric(pull(hw1_df, difficulty))
+```
+
+We are able to convert the logical vector and the factor vector but not the character vector. This makes sense, as the logical vector is TRUE/FALSE, which can be turned into 1 = TRUE and 0 = FALSE. The factor vector is basically a categorical variable, so it makes sense that we can convert it to numeric type, as we could assign values to each of the categories (in this case, 1, 2, and 3). However, we are unable to convert the character vector, which makes sense.
+
+This does help partially explain what happens when we take the mean, as we can take means of numbers in the random sample and 0s and 1s in the logical vector. However, without converting the factor vector to numeric, we cannot take the mean of it. Character vectors cannot be converted to numeric, so it also makes sense that we cannot take the mean of that vector.
+
+
 
 
 
